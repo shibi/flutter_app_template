@@ -18,7 +18,7 @@ class BaseController extends GetxController{
     update();
   }
 
-  Future<void> wrappedApiCall<ResponseClass>(Future<ResponseModel> Function() apiCall, Function(ResponseModel response) onSuccess, Function(String message) onFailure) async{
+  Future<void> safeApiCall<ResponseClass>(Future<ResponseModel> Function() apiCall, Function(ResponseModel response) onSuccess, Function(String message) onFailure) async{
     try{
 
       ResponseModel responseModel = await apiCall();
@@ -37,7 +37,7 @@ class BaseController extends GetxController{
 
   //Alert display message section
 
-  //show message with empty title
+  //show message with title
   void showMessage(String title, String msg){
     showSnack(title, msg);
   }
@@ -47,12 +47,12 @@ class BaseController extends GetxController{
     showSnack('', msg);
   }
 
-  //show error message or default preset message
+  //show error message or default preset message //No Title
   void showMessageOrDefault(String? msg){
     showSnack('', msg??StringResources.defaultErrorMsg);
   }
 
-  //Basic snack-bar
+  //basic snack-bar
   void showSnack(String title, String msg){
     Get.snackbar(title, msg);
   }
