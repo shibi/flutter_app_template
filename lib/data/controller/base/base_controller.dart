@@ -20,7 +20,7 @@ class BaseController extends GetxController{
 
   Future<void> safeApiCall<ResponseClass>(Future<ResponseModel> Function() apiCall, Function(ResponseModel response) onSuccess, Function(String message) onFailure) async{
     try{
-
+      updateLoadingState(isLoading: true);
       ResponseModel responseModel = await apiCall();
       if(responseModel.isSuccess){
         onSuccess(responseModel);
@@ -30,6 +30,8 @@ class BaseController extends GetxController{
 
     }catch(e){
       onFailure(e.toString());
+    }finally{
+      updateLoadingState(isLoading: false);
     }
   }
 
@@ -56,4 +58,5 @@ class BaseController extends GetxController{
   void showSnack(String title, String msg){
     Get.snackbar(title, msg);
   }
+
 }

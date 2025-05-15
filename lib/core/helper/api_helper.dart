@@ -17,9 +17,9 @@ class ApiHelper{
   };
   static const String BEARER_KEYWORD = 'Bearer';
 
-  final encoding = Encoding.getByName('utf-8');
+  static final encoding = Encoding.getByName('utf-8');
 
-  Map<String, String> getHeaders({required String token}) {
+  static Map<String, String> getHeaders({required String token}) {
     Map<String, String> header;
     if (token.isNotEmpty) {
       header = {
@@ -33,7 +33,7 @@ class ApiHelper{
     return header;
   }
 
-  String getJsonBody(Map<String, dynamic>? map) {
+  static String getJsonBody(Map<String, dynamic>? map) {
     String jsonBody;
     if (map == null) {
       jsonBody = '';

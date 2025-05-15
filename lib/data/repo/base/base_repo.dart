@@ -7,5 +7,4 @@ abstract class BaseRepo{
 
   BaseRepo({required this.apiService});
 
-
 }
