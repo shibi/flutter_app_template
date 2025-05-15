@@ -24,7 +24,7 @@ class LoginController extends BaseController{
       }, (response) {
         LoginResponseModel loginResponse = LoginResponseModel.fromJson(jsonDecode(response.data));
 
-        //do login saving here..
+        //do login saving here...
 
         onSuccess();
       }, (message) {
